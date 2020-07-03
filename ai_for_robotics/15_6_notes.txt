@@ -1,0 +1,8 @@
+The formula you need to use in the exercise is as follows. Note that it is a little different from the ones in the video.
+
+yi <- yi + alpha (xi - yi) + beta (yi + 1 + yi - 1 - 2 * yi)
+
+There is an error in the solution presented in this video. newpath[i][j] is updated two times in lines 37 and 38. This is incorrect: instead, newpath[i][j] should only be updated one time. An example fix would be to replace lines 37-39 with the single update:
+
+	newpath[i][j] += weight_data * (path[i][j] - newpath[i][j]) + 
+                 	 weight_smooth * (newpath[i-1][j] + newpath[i+1][j] - 2.0 * newpath[i][j])

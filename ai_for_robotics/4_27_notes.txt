@@ -1,0 +1,46 @@
+x : estimate
+P : uncertainty covariance
+F : state transition matrix
+u : motion vector
+Z : measurement
+H : measurement function
+R : measurement noise
+I : identity matrix
+
+T : transpose
+y : error
+K : kalman gain
+
+PREDICTION UPDATE
+
+x' = Fx + u 
+- take best estimate x
+- multiply it with state transition matrix F
+- add whatever motion I know u
+
+covariance matrix P update
+P' = F * P * F^T
+
+
+MEASURMENT UPDATE
+
+y = z - H*x 
+- use measurment z
+- compare with predition where is measurement function that maps state to measurements
+- we call this (y) the error
+
+S = H*P*H^T + R
+- error is mapped into a matrix S
+- obtained by projecting the system uncertainty P...
+- into the measurement space using the measurement function projection
+- plus a matrix R that characterizes the measurement noise
+
+K = P * H^t * S^-1
+- this is then mapped into a variable called K 
+- where we invert the matrix S 
+
+x' = x + (K*y)
+- finally actually update our estimate and our uncertainty
+
+P' = (I - K*H) * P
+- using cryptic equation
