@@ -34,6 +34,7 @@ path = [[0, 0],
         [4, 4]]
 
 def smooth(path, weight_data = 0.5, weight_smooth = 0.1, tolerance = 0.000001):
+# def smooth(path, weight_data = 0.0, weight_smooth = 0.1, tolerance = 0.000001):
 
     # Make a deep copy of path into newpath
     newpath = deepcopy(path)
