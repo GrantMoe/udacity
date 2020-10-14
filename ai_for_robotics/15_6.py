@@ -17,7 +17,7 @@
 from copy import deepcopy
 
 # thank you to EnTerr for posting this on our discussion forum
-def printpaths(path,newpath):
+def printpaths(path, newpath):
     for old,new in zip(path,newpath):
         print('['+ ', '.join('%.3f'%x for x in old) + \
               '] -> ['+ ', '.join('%.3f'%x for x in new) +']')
@@ -54,11 +54,11 @@ def smooth(path, weight_data = 0.5, weight_smooth = 0.1, tolerance = 0.000001):
         change = 0.0
         for i in range(1, len(path) - 1):
             for j in range(len(path[0])):
-                    prev = newpath[i][j]
-                    newpath[i][j] += weight_data * (path[i][j] - newpath[i][j])
-                    newpath[i][j] += weight_smooth * (newpath[i-1][j] \
-                                    + newpath[i+1][j] - (2.0 * newpath[i][j]))
-                    change += abs(prev - newpath[i][j])
+                prev = newpath[i][j]
+                newpath[i][j] += weight_data * (path[i][j] - newpath[i][j])
+                newpath[i][j] += weight_smooth * (newpath[i-1][j] \
+                                + newpath[i+1][j] - (2.0 * newpath[i][j]))
+                change += abs(prev - newpath[i][j])
     return newpath # Leave this line for the grader!
 
 printpaths(path,smooth(path))
